@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: date-time-app
+spec:
+  replicas: 2  # Initial number of pods
+  selector:
+    matchLabels:
+      app: date-time-app
+  template:
+    metadata:
+      labels:
+        app: date-time-app
+    spec:
+      containers:
+      - name: date-time-app
+        image: date-time-app:latest  # Image loaded in Minikube
+        ports:
+        - containerPort: 5000
+        resources:
+          requests:
+            cpu: "100m"  # 0.1 CPU cores (Baseline CPU usage)
+          limits:
+            cpu: "200m"  # 0.2 CPU cores (Max CPU usage)
+            

@@ -1,0 +1,21 @@
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: date-time-app-vpa
+spec:
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: date-time-app  # Target deployment
+  updatePolicy:
+    updateMode: "Auto"  # VPA will automatically update resource requests
+  resourcePolicy:
+    containerPolicies:
+    - containerName: date-time-app
+      minAllowed:
+        cpu: "100m"   # Minimum 0.1 CPU cores
+        memory: "100Mi" # Minimum 100 MB RAM
+      maxAllowed:
+        cpu: "500m"   # Maximum 0.5 CPU cores
+        memory: "500Mi" # Maximum 500 MB RAM
+      controlledResources: ["cpu", "memory"]  # VPA manages both CPU and memory
