@@ -1,6 +1,6 @@
 # Project Documentation
 
-This branch contains all documentation related to the project.
+This branch contains all documentation related to the research.
 
 ## 📂 Contents
 - **Project Overview** – General information about the project.
